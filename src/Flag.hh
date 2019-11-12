@@ -12,7 +12,7 @@ private:
 
 public:
 	Flag(const std::string &description);
-	virtual void parse(int argc, char **argv, const std::vector<bool> &unused);
+	virtual void parse(int argc, char **argv, std::vector<bool> &unused);
 	virtual bool isSet() const;
 	virtual void print(std::ostream& os) const;
 };

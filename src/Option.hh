@@ -20,7 +20,7 @@ public:
 	~Option();
 	virtual void addPOSIXParser(char label);
 	virtual void addGNUParser(const std::string &label);
-	virtual void parse(int argc, char **argv, const std::vector<bool> &unused) = 0;
+	virtual void parse(int argc, char **argv, std::vector<bool> &unused) = 0;
 	virtual void print(std::ostream &os) const = 0;
 	friend std::ostream& operator<<(std::ostream &os, const Option &arg);
 };

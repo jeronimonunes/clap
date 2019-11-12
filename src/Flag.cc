@@ -8,8 +8,16 @@ Flag::Flag(const string &description) : Option(description)
 	this->wasSet = false;
 };
 
-void Flag::parse(int argc, char **argv, const std::vector<bool> &unused){
-	//TODO
+void Flag::parse(int argc, char **argv, std::vector<bool> &unused)
+{
+	for (auto parser : this->parsers)
+	{
+		if (parser->parseFlag(argc, argv, unused))
+		{
+			wasSet = true;
+			break;
+		}
+	}
 };
 
 bool Flag::isSet() const

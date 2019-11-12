@@ -18,6 +18,7 @@ void Program::addOption(Option &param)
 bool Program::parse(int argc, char **argv)
 {
 	vector<bool> unused(argc, true);
+	unused[0] = false;
 	for (auto itr = this->options.begin(); itr != this->options.end(); itr++)
 	{
 		Option &option = *itr;

@@ -5,8 +5,15 @@ using namespace std;
 
 Param::Param(const std::string &description, bool optional, const std::string &type, const std::string &defaultValue) : Option(description), optional(optional), type(type), defaultValue(defaultValue){};
 
-void Param::parse(int argc, char **argv, const std::vector<bool> &unused){
-	//TODO
+void Param::parse(int argc, char **argv, std::vector<bool> &unused)
+{
+	for (auto parser : this->parsers)
+	{
+		auto results = parser->parseParam(argc, argv, unused);
+		for(auto v : results) {
+			this->values.push_back(v);
+		}
+	}
 };
 
 void Param::print(ostream &os) const
@@ -24,11 +31,14 @@ void Param::print(ostream &os) const
 		if (this->optional)
 		{
 			os << " [" << this->type << "]";
-		} else {
+		}
+		else
+		{
 			os << " <" << this->type << ">";
 		}
 		os << "\t\t" << this->description << ".";
-		if(this->defaultValue.size()) {
+		if (this->defaultValue.size())
+		{
 			os << " Default: " << this->defaultValue;
 		}
 	}

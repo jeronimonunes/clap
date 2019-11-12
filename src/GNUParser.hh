@@ -7,11 +7,14 @@ namespace Clap
 {
 class GNUParser : public Parser
 {
+private:
+	const std::string label;
+
 public:
 	GNUParser(std::string label);
 	virtual std::string getFormattedLabel() const;
-	virtual void parseParam(int argc, char **argv, const std::vector<bool> &unused);
-	virtual void parseFlag(int argc, char **argv, const std::vector<bool> &unused);
+	virtual std::vector<std::string> parseParam(int argc, char **argv, std::vector<bool> &unused);
+	virtual bool parseFlag(int argc, char **argv, std::vector<bool> &unused);
 };
 } // namespace Clap
 #endif
