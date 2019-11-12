@@ -3,7 +3,7 @@
 using namespace Clap;
 using namespace std;
 
-Param::Param(const std::string &description, bool optional, const std::string &type, const std::string &defaultValue) : Argument(description), optional(optional), type(type), defaultValue(defaultValue){};
+Param::Param(const std::string &description, bool optional, const std::string &type, const std::string &defaultValue) : Option(description), optional(optional), type(type), defaultValue(defaultValue){};
 
 void Param::parse(int argc, char **argv, const std::vector<bool> &unused){
 	//TODO

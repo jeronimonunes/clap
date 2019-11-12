@@ -3,7 +3,7 @@
 using namespace Clap;
 using namespace std;
 
-Flag::Flag(const string &description) : Argument(description)
+Flag::Flag(const string &description) : Option(description)
 {
 	this->wasSet = false;
 };

@@ -3,7 +3,7 @@
 using namespace Clap;
 using namespace std;
 
-POSIXParser::POSIXParser(const string& name) : Parser(name) {}
+POSIXParser::POSIXParser(const char label) : Parser({label}) {}
 
 void POSIXParser::parseParam(int argc, char **argv, const std::vector<bool> &unused)
 {

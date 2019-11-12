@@ -10,18 +10,18 @@ Program::Program(const string &title, const string &version, const string &descr
 	this->description = description;
 };
 
-void Program::addArgument(Argument &param)
+void Program::addOption(Option &param)
 {
-	this->arguments.push_back(param);
+	this->options.push_back(param);
 };
 
 bool Program::parse(int argc, char **argv)
 {
 	vector<bool> unused(argc, true);
-	for (auto itr = this->arguments.begin(); itr != this->arguments.end(); itr++)
+	for (auto itr = this->options.begin(); itr != this->options.end(); itr++)
 	{
-		Argument &argument = *itr;
-		argument.parse(argc, argv, unused);
+		Option &option = *itr;
+		option.parse(argc, argv, unused);
 	}
 	return true; // TODO
 }
@@ -35,8 +35,8 @@ std::ostream &operator<<(std::ostream &os, const Program &x)
 	   << "DESCRIPTION:" << endl
 	   << "\t " << x.description << endl
 	   << endl
-	   << "Arguments:" << endl;
-	for (auto itr = x.arguments.begin(); itr != x.arguments.end(); itr++)
+	   << "Options:" << endl;
+	for (auto itr = x.options.begin(); itr != x.options.end(); itr++)
 	{
 		os << *itr << endl;
 	}

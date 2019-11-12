@@ -1,11 +1,11 @@
 #ifndef CLAP_FLAG_HH
 #define CLAP_FLAG_HH
 
-#include "./Argument.hh"
+#include "./Option.hh"
 
 namespace Clap
 {
-class Flag : public Argument
+class Flag : public Option
 {
 private:
 	bool wasSet;

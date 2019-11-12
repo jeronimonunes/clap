@@ -1,11 +1,11 @@
 #ifndef CLAP_PARAM_HH
 #define CLAP_PARAM_HH
 
-#include "./Argument.hh"
+#include "./Option.hh"
 
 namespace Clap
 {
-class Param : public Argument
+class Param : public Option
 {
 private:
 	bool optional;

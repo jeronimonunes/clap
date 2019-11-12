@@ -1,5 +1,5 @@
-#ifndef CLAP_ARGUMENT_HH
-#define CLAP_ARGUMENT_HH
+#ifndef CLAP_OPTION_HH
+#define CLAP_OPTION_HH
 
 #include <vector>
 #include <string>
@@ -9,21 +9,20 @@
 
 namespace Clap
 {
-class Argument
+class Option
 {
 protected:
 	std::string description;
 	std::vector<Parser *> parsers;
-	void addParser(const std::string &label, Parser *parser);
 
 public:
-	Argument(const std::string &description);
-	~Argument();
-	virtual void addPOSIXParser(const std::string &label);
+	Option(const std::string &description);
+	~Option();
+	virtual void addPOSIXParser(char label);
 	virtual void addGNUParser(const std::string &label);
 	virtual void parse(int argc, char **argv, const std::vector<bool> &unused) = 0;
 	virtual void print(std::ostream &os) const = 0;
-	friend std::ostream& operator<<(std::ostream &os, const Argument &arg);
+	friend std::ostream& operator<<(std::ostream &os, const Option &arg);
 };
 } // namespace Clap
 #endif

@@ -17,7 +17,7 @@ library-objects = \
 	GNUParser.o \
 	POSIXParser.o \
 	Program.o \
-	Argument.o \
+	Option.o \
 	Param.o \
 	Flag.o
 
@@ -26,7 +26,7 @@ library-headers = \
 	GNUParser.hh \
 	POSIXParser.hh \
 	Program.hh \
-	Argument.hh \
+	Option.hh \
 	Param.hh \
 	Flag.hh
 
