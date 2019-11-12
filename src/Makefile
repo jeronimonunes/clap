@@ -39,18 +39,14 @@ $(library-objects): $(library-headers)
 
 # Components of the program.
 program = sample.exe
-program-objects = sample.o
 
-# Conservatively assume all the program source files depend on all the library
-# headers.  You can change this if it is not the case.
-$(program-objects) : $(library-headers)
 
 # How to link the program.  The implicit rule covers individual objects.
-$(program) : $(program-objects) $(library-objects)
+$(program) : sample.cc $(library-objects)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 # Delete all generated files we know about.
 clean :
-	$(RM) $(library-objects) $(program-objects) $(program)
+	$(RM) $(library-objects) $(program)
 
 all : library $(program)
