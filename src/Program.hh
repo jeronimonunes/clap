@@ -15,6 +15,7 @@ private:
 	std::string title;
 	std::string version;
 	std::string description;
+	std::string executable;
 	std::vector<std::reference_wrapper<Option>> options;
 
 public:
