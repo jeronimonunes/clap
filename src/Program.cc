@@ -15,12 +15,12 @@ void Program::addOption(Option &param)
 	this->options.push_back(param);
 };
 
-bool Program::parse(int argc, char **argv)
+vector<bool> Program::parse(int argc, char **argv)
 {
+	vector<bool> unused(argc, true);
 	if (argc)
 	{
 		this->executable = argv[0];
-		vector<bool> unused(argc, true);
 		unused[0] = false;
 		for (auto itr = this->options.begin(); itr != this->options.end(); itr++)
 		{
@@ -28,7 +28,7 @@ bool Program::parse(int argc, char **argv)
 			option.parse(argc, argv, unused);
 		}
 	}
-	return true; // TODO
+	return unused;
 }
 namespace Clap
 {

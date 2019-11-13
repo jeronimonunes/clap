@@ -32,7 +32,7 @@ help.addGNUParser("help");
 program.addOption(help);
 ```
 
-The Flag constructor receives the description of the parameter. The ```addPOSIXParser(<label>)``` makes the flag enabable via -h.
+The Flag constructor receives the description of the parameter. The ```addPOSIXParser('h')``` makes the flag enabable via -h. The ```addGNUParser("help")``` makes the flag enabable via --help.
 
 ### Adding a Param
 
@@ -47,4 +47,11 @@ The Param constructor also gets the description as first argument but it also re
 
 ### Parsing
 
-The parsing phase is to be implemented
+The info in argc and argv are going to be used to fill the values in Params and also set the Flags. The parse method in the Program object will return a `std::vector<bool>` which is true for any unused command line argument. Note here that no value have been validated yet. Every Param will have a `std::vector<string>` with the values that have been set to any Param. The vector will contain multiple values only if the user repeated the parameter name. Example:
+
+```sh
+program.exe --param 1 --param 2 --param=3
+program.exe -p 1 -p 2 -p=3
+```
+
+Every Param will grab the next command line argument iff they do not have a =value attached to them.

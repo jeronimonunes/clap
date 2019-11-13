@@ -21,7 +21,7 @@ private:
 public:
 	Program(const std::string &title, const std::string &version, const std::string &description);
 	void addOption(Option &option);
-	bool parse(int argc, char **argv);
+	std::vector<bool> parse(int argc, char **argv);
 	friend std::ostream &operator<<(std::ostream &os, const Program &x);
 };
 

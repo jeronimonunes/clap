@@ -20,14 +20,20 @@ int main(int argc, char **argv)
 	help.addGNUParser("help");
 	program.addOption(help);
 
-	if (program.parse(argc, argv))
-	{
-		cout << program << endl;
-		return 0;
+	vector<bool> test(0, true);
+	bool success = true;
+	vector<bool> unused = program.parse(argc, argv);
+	for(int i = 0; i < argc; i++) {
+		if(unused[i]) {
+			cerr << "Unrecognized option: " << argv[i] << endl;
+			success = false;
+		}
 	}
-	else
-	{
-		cout << "Unrecognized parameters use " << argv[0] << " --help to get help" << endl;
+	if(success) {
+		cerr << program << endl;
+		return 0;
+	} else {
+		cerr << "Use --help to get info about how to set options" << endl;
 		return -1;
 	}
 }
