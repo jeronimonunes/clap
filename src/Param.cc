@@ -43,3 +43,7 @@ void Param::print(ostream &os) const
 		}
 	}
 }
+
+const std::vector<std::string>& Param::getValues() const {
+	return this->values;
+}

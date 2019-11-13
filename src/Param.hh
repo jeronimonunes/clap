@@ -17,6 +17,7 @@ public:
 	Param(const std::string &description, bool optional, const std::string &type, const std::string &defaultValue = "");
 	virtual void parse(int argc, char **argv, std::vector<bool> &unused);
 	virtual void print(std::ostream& os) const;
+	virtual const std::vector<std::string>& getValues() const;
 };
 } // namespace Clap
 #endif
